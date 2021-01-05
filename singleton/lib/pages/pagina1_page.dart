@@ -17,7 +17,7 @@ class Pagina1Page extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.access_alarm),
-        onPressed: () => Navigator.popAndPushNamed(context, 'pagina2'),
+        onPressed: () => Navigator.pushNamed(context, 'pagina2'),
       ),
     );
   }
@@ -26,6 +26,7 @@ class Pagina1Page extends StatelessWidget {
 class InformacionUsuario extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final usuario = usuarioService.usuario;
     return Container(
       width: double.infinity,
       height: double.infinity,
@@ -42,10 +43,10 @@ class InformacionUsuario extends StatelessWidget {
           ),
           Divider(),
           ListTile(
-            title: Text('Nombre: '),
+            title: Text('Nombre: ${usuario.nombre}'),
           ),
           ListTile(
-            title: Text('Edad: '),
+            title: Text('Edad: ${usuario.edad}'),
           ),
           Divider(),
           Text(
@@ -57,10 +58,10 @@ class InformacionUsuario extends StatelessWidget {
           ),
           Divider(),
           ListTile(
-            title: Text('Profesion 1: '),
+            title: Text('Profesion 1: ${usuario.profesiones[0]}'),
           ),
           ListTile(
-            title: Text('Profesion 2: '),
+            title: Text('Profesion 2: ${usuario.profesiones[1]}'),
           ),
         ],
       ),

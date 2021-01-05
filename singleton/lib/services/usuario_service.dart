@@ -12,6 +12,14 @@ class _UsuarioService {
     this._usuario = usuario;
   }
 
+  void cambiarEdad(int edad){
+    this._usuario.edad = edad;
+  }
+
+  void cambiarNombre(String nombre){
+    this._usuario.nombre = nombre;
+  }
+
 }
 
 

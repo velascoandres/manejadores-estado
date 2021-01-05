@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:singleton/models/usuario_model.dart';
 import 'package:singleton/services/usuario_service.dart';
 
 class Pagina1Page extends StatelessWidget {
@@ -10,10 +11,19 @@ class Pagina1Page extends StatelessWidget {
       appBar: AppBar(
         title: Text('Pagina 1'),
       ),
-      body: usuarioService.existeUsuario ? Container(
-        child: InformacionUsuario(),
-      ): Center(
-        child: Text('No hay informacion del usuario'),
+      body: StreamBuilder(
+        stream: usuarioService.usuarioSteam,
+        builder: (BuildContext context, AsyncSnapshot<UsuarioModel> snapshot) {
+          return snapshot.hasData
+              ? Container(
+                  child: InformacionUsuario(
+                    usuario: snapshot.data,
+                  ),
+                )
+              : Center(
+                  child: Text('No hay informacion del usuario'),
+                );
+        },
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.access_alarm),
@@ -24,9 +34,12 @@ class Pagina1Page extends StatelessWidget {
 }
 
 class InformacionUsuario extends StatelessWidget {
+  final UsuarioModel usuario;
+
+  InformacionUsuario({this.usuario});
+
   @override
   Widget build(BuildContext context) {
-    final usuario = usuarioService.usuario;
     return Container(
       width: double.infinity,
       height: double.infinity,

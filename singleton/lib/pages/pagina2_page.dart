@@ -11,7 +11,43 @@ class Pagina2Page extends StatelessWidget {
       ),
       body: Container(
         child: Center(
-          child: Text('Pagina 2'),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              MaterialButton(
+                color: Colors.blue,
+                child: Text(
+                  'Establecer Usuario',
+                  style: TextStyle(
+                    color: Colors.white
+                  ),
+                ),
+                onPressed: () => {},
+              ),
+
+              MaterialButton(
+                color: Colors.blue,
+                child: Text(
+                  'Cambiar edad',
+                  style: TextStyle(
+                    color: Colors.white
+                  ),
+                ),
+                onPressed: () => {},
+              ),
+
+              MaterialButton(
+                color: Colors.blue,
+                child: Text(
+                  'Añadir una profesion',
+                  style: TextStyle(
+                    color: Colors.white
+                  ),
+                ),
+                onPressed: () => {},
+              ),
+            ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(

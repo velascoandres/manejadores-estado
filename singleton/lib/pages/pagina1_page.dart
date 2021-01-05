@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:singleton/services/usuario_service.dart';
 
 class Pagina1Page extends StatelessWidget {
   const Pagina1Page({Key key}) : super(key: key);
@@ -9,8 +10,10 @@ class Pagina1Page extends StatelessWidget {
       appBar: AppBar(
         title: Text('Pagina 1'),
       ),
-      body: Container(
+      body: usuarioService.existeUsuario ? Container(
         child: InformacionUsuario(),
+      ): Center(
+        child: Text('No hay informacion del usuario'),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.access_alarm),

@@ -1,7 +1,7 @@
-class Usuario {
+class UsuarioModel {
   String nombre;
   int edad;
   List<String> profesiones;
 
-  Usuario({this.nombre, this.edad, this.profesiones});
+  UsuarioModel({this.nombre, this.edad, this.profesiones});
 }

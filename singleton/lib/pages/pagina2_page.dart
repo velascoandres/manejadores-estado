@@ -9,7 +9,14 @@ class Pagina2Page extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Pagina 2'),
+        title: StreamBuilder(
+          stream: usuarioService.usuarioSteam,
+          builder:
+              (BuildContext context, AsyncSnapshot<UsuarioModel> snapshot) {
+            return Text(
+                '${snapshot.hasData ? snapshot.data.nombre : 'Pagina 2'}');
+          },
+        ),
       ),
       body: Container(
         child: Center(
@@ -27,10 +34,7 @@ class Pagina2Page extends StatelessWidget {
                     UsuarioModel(
                       edad: 22,
                       nombre: 'Pepe',
-                      profesiones: [
-                        'Ninguna',
-                        'Ninguna x2'
-                      ],
+                      profesiones: ['Ninguna', 'Ninguna x2'],
                     ),
                   );
                 },
@@ -41,7 +45,7 @@ class Pagina2Page extends StatelessWidget {
                   'Cambiar edad',
                   style: TextStyle(color: Colors.white),
                 ),
-                onPressed: (){
+                onPressed: () {
                   usuarioService.cambiarEdad(25);
                 },
               ),

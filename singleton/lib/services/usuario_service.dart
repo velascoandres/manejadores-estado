@@ -8,7 +8,7 @@ class _UsuarioService {
   UsuarioModel get usuario => this._usuario;
 
   StreamController<UsuarioModel> _usuarioStreamController =
-      new StreamController<UsuarioModel>();
+      new StreamController<UsuarioModel>.broadcast();
 
   bool get existeUsuario => this._usuario != null;
 
@@ -16,21 +16,21 @@ class _UsuarioService {
 
   void cargarUsuario(UsuarioModel usuario) {
     this._usuario = usuario;
-    this._usuarioStreamController.add(this.usuario);
+    _usuarioStreamController.add(this.usuario);
   }
 
   void cambiarEdad(int edad) {
     this._usuario.edad = edad;
-    this._usuarioStreamController.add(this.usuario);
+    _usuarioStreamController.add(this.usuario);
   }
 
   void cambiarNombre(String nombre) {
     this._usuario.nombre = nombre;
-    this._usuarioStreamController.add(this.usuario);
+    _usuarioStreamController.add(this.usuario);
   }
 
   dispose() {
-    this._usuarioStreamController.close();
+    this._usuarioStreamController?.close();
   }
 }
 

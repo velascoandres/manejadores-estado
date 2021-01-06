@@ -1,16 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:provider_example/models/usuario_model.dart';
+import 'package:provider/provider.dart';
+import 'package:provider_example/services/usuario_service.dart';
 
 class Pagina1Page extends StatelessWidget {
   const Pagina1Page({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final usuarioService = Provider.of<UsuarioService>(context);
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Pagina 1'),
       ),
       body: Container(
-        child: InformacionUsuario(),
+        child: usuarioService.existeUsuario
+            ? InformacionUsuario(
+              usuario: usuarioService.usuario,
+            )
+            : Center(
+                child: Text('No exite usuario'),
+              ),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.access_alarm),
@@ -21,6 +32,9 @@ class Pagina1Page extends StatelessWidget {
 }
 
 class InformacionUsuario extends StatelessWidget {
+  final Usuario usuario;
+  InformacionUsuario({this.usuario});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -39,10 +53,10 @@ class InformacionUsuario extends StatelessWidget {
           ),
           Divider(),
           ListTile(
-            title: Text('Nombre: '),
+            title: Text('Nombre: ${usuario.nombre}'),
           ),
           ListTile(
-            title: Text('Edad: '),
+            title: Text('Edad: ${usuario.edad}'),
           ),
           Divider(),
           Text(
@@ -54,10 +68,10 @@ class InformacionUsuario extends StatelessWidget {
           ),
           Divider(),
           ListTile(
-            title: Text('Profesion 1: '),
+            title: Text('Profesion 1: ${usuario.profesiones[0]}'),
           ),
           ListTile(
-            title: Text('Profesion 2: '),
+            title: Text('Profesion 2: ${usuario.profesiones[1]}'),
           ),
         ],
       ),

@@ -12,6 +12,14 @@ class UsuarioService with ChangeNotifier {
     notifyListeners();
   }
 
-  set edad(int edad) => this.usuario.edad = edad;
+  set edad(int edad){
+    this.usuario.edad = edad;
+    notifyListeners();
+  }
+
+  void removerUsuario(){
+    this._usuario = null;
+    notifyListeners();
+  }
 
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'pages/pagina1_page.dart';
  
-import 'package:singleton/pages/pagina2_page.dart';
+import 'package:provider_example/pages/pagina2_page.dart';
 void main() => runApp(MyApp());
  
 class MyApp extends StatelessWidget {

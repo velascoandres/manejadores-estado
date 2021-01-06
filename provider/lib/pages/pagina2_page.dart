@@ -50,10 +50,6 @@ class Pagina2Page extends StatelessWidget {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.access_alarm),
-        onPressed: () => Navigator.popAndPushNamed(context, 'pagina1'),
-      ),
     );
   }
 }

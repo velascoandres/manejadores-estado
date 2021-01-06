@@ -14,7 +14,7 @@ class Pagina1Page extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.access_alarm),
-        onPressed: () => Navigator.popAndPushNamed(context, 'pagina2'),
+        onPressed: () => Navigator.pushNamed(context, 'pagina2'),
       ),
     );
   }

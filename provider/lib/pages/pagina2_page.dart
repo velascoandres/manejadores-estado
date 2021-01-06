@@ -37,7 +37,7 @@ class Pagina2Page extends StatelessWidget {
                   usuarioService.usuario = Usuario(
                     nombre: 'Pepe',
                     edad: 23,
-                    profesiones: ['', 'Algo'],
+                    profesiones: ['Profesor', 'Abogado'],
                   );
                 },
               ),
@@ -61,7 +61,9 @@ class Pagina2Page extends StatelessWidget {
                   'Añadir una profesion',
                   style: TextStyle(color: Colors.white),
                 ),
-                onPressed: () => {},
+                onPressed: () {
+                  usuarioService.agregarProfesion();
+                },
               ),
             ],
           ),

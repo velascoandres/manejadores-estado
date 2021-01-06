@@ -12,14 +12,19 @@ class UsuarioService with ChangeNotifier {
     notifyListeners();
   }
 
-  set edad(int edad){
-    this.usuario.edad = edad;
+  set edad(int edad) {
+    this._usuario.edad = edad;
     notifyListeners();
   }
 
-  void removerUsuario(){
+  void agregarProfesion() {
+    final total = this._usuario.profesiones.length + 1;
+    this._usuario.profesiones.add( 'Profesion: $total');
+    notifyListeners();
+  }
+
+  void removerUsuario() {
     this._usuario = null;
     notifyListeners();
   }
-
 }

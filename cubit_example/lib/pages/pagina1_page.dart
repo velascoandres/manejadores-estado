@@ -1,4 +1,7 @@
+import 'package:cubit_example/bloc/usuario/usuario_cubit.dart';
+import 'package:cubit_example/models/usuario_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Pagina1Page extends StatelessWidget {
   const Pagina1Page({Key key}) : super(key: key);
@@ -9,8 +12,16 @@ class Pagina1Page extends StatelessWidget {
       appBar: AppBar(
         title: Text('Pagina 1'),
       ),
-      body: Container(
-        child: InformacionUsuario(),
+      body: BlocBuilder<UsuarioCubit, UsuarioState>(
+        builder: (_, state){
+
+            if (state is UsuarioInitial){
+                return Center(
+                  child: Text('No hay informacion del usuario'),
+                );
+            }
+            return InformacionUsuario();
+        },
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.access_alarm),
@@ -21,6 +32,11 @@ class Pagina1Page extends StatelessWidget {
 }
 
 class InformacionUsuario extends StatelessWidget {
+
+  final Usuario usuario;
+
+  InformacionUsuario({this.usuario});
+
   @override
   Widget build(BuildContext context) {
     return Container(

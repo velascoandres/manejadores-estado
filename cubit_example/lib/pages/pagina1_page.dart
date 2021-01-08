@@ -12,22 +12,41 @@ class Pagina1Page extends StatelessWidget {
       appBar: AppBar(
         title: Text('Pagina 1'),
       ),
-      body: BlocBuilder<UsuarioCubit, UsuarioState>(
-        builder: (_, state) {
-          if (state is UsuarioActivo) {
-            return InformacionUsuario(
-              usuario: state.usuario,
-            );
-          }
-          return Center(
-            child: Text('No hay informacion del usuario'),
-          );
-        },
-      ),
+      body: BodyScafold(),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.access_alarm),
         onPressed: () => Navigator.pushNamed(context, 'pagina2'),
       ),
+    );
+  }
+}
+
+class BodyScafold extends StatelessWidget {
+  const BodyScafold({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<UsuarioCubit, UsuarioState>(
+      builder: (_, state) {
+        switch (state.runtimeType) {
+          case UsuarioInitial:
+            return Center(
+              child: Text('No hay informacion del usuario'),
+            );
+
+          case UsuarioActivo:
+            return InformacionUsuario(
+              usuario: (state as UsuarioActivo).usuario,
+            );
+
+          default:
+            return Center(
+              child: Text('Estado no reconocido'),
+            );
+        }
+      },
     );
   }
 }

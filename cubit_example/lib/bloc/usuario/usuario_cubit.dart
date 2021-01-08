@@ -24,4 +24,29 @@ class UsuarioCubit extends Cubit<UsuarioState> {
       );
     }
   }
+
+
+  void agregarProfesion(String profesion) {
+    final estadoActual = state;
+    if (estadoActual is UsuarioActivo) {
+
+      final profesionesActuales = estadoActual.usuario.profesiones;
+      final nuevasProfesiones = [
+        ...profesionesActuales,
+        profesion,
+      ];
+      final nuevoUsuario = estadoActual.usuario.copyWith(
+        profesiones: nuevasProfesiones,
+      );
+      emit(
+        UsuarioActivo(
+          usuario: nuevoUsuario,
+        ),
+      );
+    }
+  }
+
+  void borrarUsuario(){
+    emit(UsuarioInitial());
+  }
 }

@@ -15,7 +15,7 @@ class Usuario {
   ){
     return Usuario(
       nombre: nombre ?? this.nombre,
-      edad: edad ?? this.profesiones,
+      edad: edad ?? this.edad,
       profesiones: profesiones ?? this.profesiones,
     );
   }

@@ -53,7 +53,7 @@ class Pagina2Page extends StatelessWidget {
                   'Añadir una profesion',
                   style: TextStyle(color: Colors.white),
                 ),
-                onPressed: () => {},
+                onPressed: () => usuarioCubit.agregarProfesion('Doctor'),
               ),
             ],
           ),

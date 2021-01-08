@@ -11,6 +11,14 @@ class Pagina1Page extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Pagina 1'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.logout),
+            onPressed: (){
+              BlocProvider.of<UsuarioCubit>(context).borrarUsuario();
+            },
+          )
+        ],
       ),
       body: BodyScafold(),
       floatingActionButton: FloatingActionButton(

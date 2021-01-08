@@ -13,14 +13,15 @@ class Pagina1Page extends StatelessWidget {
         title: Text('Pagina 1'),
       ),
       body: BlocBuilder<UsuarioCubit, UsuarioState>(
-        builder: (_, state){
-
-            if (state is UsuarioInitial){
-                return Center(
-                  child: Text('No hay informacion del usuario'),
-                );
-            }
-            return InformacionUsuario();
+        builder: (_, state) {
+          if (state is UsuarioActivo) {
+            return InformacionUsuario(
+              usuario: state.usuario,
+            );
+          }
+          return Center(
+            child: Text('No hay informacion del usuario'),
+          );
         },
       ),
       floatingActionButton: FloatingActionButton(
@@ -32,7 +33,6 @@ class Pagina1Page extends StatelessWidget {
 }
 
 class InformacionUsuario extends StatelessWidget {
-
   final Usuario usuario;
 
   InformacionUsuario({this.usuario});
@@ -55,10 +55,10 @@ class InformacionUsuario extends StatelessWidget {
           ),
           Divider(),
           ListTile(
-            title: Text('Nombre: '),
+            title: Text('Nombre: ${usuario.nombre}'),
           ),
           ListTile(
-            title: Text('Edad: '),
+            title: Text('Edad: ${usuario.edad}'),
           ),
           Divider(),
           Text(
@@ -69,14 +69,17 @@ class InformacionUsuario extends StatelessWidget {
             ),
           ),
           Divider(),
-          ListTile(
-            title: Text('Profesion 1: '),
-          ),
-          ListTile(
-            title: Text('Profesion 2: '),
-          ),
+          ...this._mostrarProfesiones(),
         ],
       ),
     );
+  }
+
+  List<Widget> _mostrarProfesiones() {
+    return this
+        .usuario
+        .profesiones
+        .map((String profesion) => ListTile(title: Text(profesion)))
+        .toList();
   }
 }

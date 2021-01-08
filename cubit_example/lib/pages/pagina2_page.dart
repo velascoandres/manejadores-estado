@@ -43,7 +43,9 @@ class Pagina2Page extends StatelessWidget {
                   'Cambiar edad',
                   style: TextStyle(color: Colors.white),
                 ),
-                onPressed: () => {},
+                onPressed: () {
+                  usuarioCubit.cambiarEdad(30);
+                },
               ),
               MaterialButton(
                 color: Colors.blue,

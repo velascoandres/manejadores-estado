@@ -12,7 +12,7 @@ class UsuarioBloc extends Bloc<UsuarioEvent, UsuarioState> {
     print(event);
 
     if (event is ActivarUsuario) {
-      yield UsuarioState(
+      yield state.copyWith(
         usuario: event.usuario,
       );
     }
@@ -22,7 +22,7 @@ class UsuarioBloc extends Bloc<UsuarioEvent, UsuarioState> {
       final usuario = state.usuario.copyWith(
         edad: edad,
       );
-      yield UsuarioState(
+      yield state.copyWith(
         usuario: usuario,
       );
     }
@@ -36,9 +36,14 @@ class UsuarioBloc extends Bloc<UsuarioEvent, UsuarioState> {
           profesion,
         ],
       );
-      yield UsuarioState(
+      yield state.copyWith(
         usuario: usuario,
       );
     }
+
+    if (event is BorrarUsuario){
+      yield state.estadoInicial();
+    }
+
   }
 }

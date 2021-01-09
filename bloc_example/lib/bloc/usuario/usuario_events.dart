@@ -21,3 +21,7 @@ class AgregarProfesion extends UsuarioEvent {
 
   AgregarProfesion(this.profesion);
 }
+
+class BorrarUsuario extends UsuarioEvent {
+  
+}

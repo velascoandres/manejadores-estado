@@ -1,4 +1,5 @@
 import 'package:bloc_example/bloc/usuario/usuario_bloc.dart';
+import 'package:bloc_example/bloc/usuario/usuario_events.dart';
 import 'package:bloc_example/models/usuario_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,6 +12,16 @@ class Pagina1Page extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Pagina 1'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.delete),
+            onPressed: () {
+              BlocProvider
+              .of<UsuarioBloc>(context)
+              .add(BorrarUsuario());
+            },
+          ),
+        ],
       ),
       body: BlocBuilder<UsuarioBloc, UsuarioState>(
         builder: (context, state) {

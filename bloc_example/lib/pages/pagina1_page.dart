@@ -15,7 +15,9 @@ class Pagina1Page extends StatelessWidget {
       body: BlocBuilder<UsuarioBloc, UsuarioState>(
         builder: (context, state) {
           if (state.existeUsuario) {
-            return InformacionUsuario();
+            return InformacionUsuario(
+              usuario: state.usuario,
+            );
           }
           return Center(
             child: Text('No existe usuario'),
@@ -53,10 +55,10 @@ class InformacionUsuario extends StatelessWidget {
           ),
           Divider(),
           ListTile(
-            title: Text('Nombre: '),
+            title: Text('Nombre: ${usuario.nombre}'),
           ),
           ListTile(
-            title: Text('Edad: '),
+            title: Text('Edad: ${usuario.edad}'),
           ),
           Divider(),
           Text(
@@ -67,12 +69,13 @@ class InformacionUsuario extends StatelessWidget {
             ),
           ),
           Divider(),
-          ListTile(
-            title: Text('Profesion 1: '),
-          ),
-          ListTile(
-            title: Text('Profesion 2: '),
-          ),
+          ...usuario.profesiones
+              .map(
+                (profesion) => ListTile(
+                  title: Text(profesion),
+                ),
+              )
+              .toList()
         ],
       ),
     );

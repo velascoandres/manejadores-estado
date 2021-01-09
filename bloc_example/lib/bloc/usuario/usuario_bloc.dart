@@ -4,17 +4,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'usuario_state.dart';
 
-
-
-class UsuarioBloc extends Bloc<UsuarioEvent, UsuarioState>{
-  
-  
+class UsuarioBloc extends Bloc<UsuarioEvent, UsuarioState> {
   UsuarioBloc() : super(UsuarioState());
 
-  
   @override
-  Stream<UsuarioState> mapEventToState(UsuarioEvent event) {
-    print('hola');
+  Stream<UsuarioState> mapEventToState(UsuarioEvent event) async* {
+    print(event);
+
+    if (event is ActivarUsuario) {
+      yield UsuarioState(
+        usuario: event.usuario,
+      );
+    }
   }
-  
 }

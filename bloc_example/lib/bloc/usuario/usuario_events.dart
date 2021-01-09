@@ -14,3 +14,10 @@ class CambiarEdad extends UsuarioEvent {
 
   CambiarEdad(this.edad);
 }
+
+
+class AgregarProfesion extends UsuarioEvent {
+  final String profesion;
+
+  AgregarProfesion(this.profesion);
+}

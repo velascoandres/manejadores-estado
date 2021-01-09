@@ -26,5 +26,19 @@ class UsuarioBloc extends Bloc<UsuarioEvent, UsuarioState> {
         usuario: usuario,
       );
     }
+
+
+    if (event is AgregarProfesion) {
+      final profesion = event.profesion;
+      final usuario = state.usuario.copyWith(
+        profesiones: [
+          ...state.usuario.profesiones,
+          profesion,
+        ],
+      );
+      yield UsuarioState(
+        usuario: usuario,
+      );
+    }
   }
 }

@@ -43,40 +43,42 @@ class InformacionUsuario extends StatelessWidget {
       width: double.infinity,
       height: double.infinity,
       padding: EdgeInsets.all(20.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'General',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'General',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          Divider(),
-          ListTile(
-            title: Text('Nombre: ${usuario.nombre}'),
-          ),
-          ListTile(
-            title: Text('Edad: ${usuario.edad}'),
-          ),
-          Divider(),
-          Text(
-            'Profesiones',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
+            Divider(),
+            ListTile(
+              title: Text('Nombre: ${usuario.nombre}'),
             ),
-          ),
-          Divider(),
-          ...usuario.profesiones
-              .map(
-                (profesion) => ListTile(
-                  title: Text(profesion),
-                ),
-              )
-              .toList()
-        ],
+            ListTile(
+              title: Text('Edad: ${usuario.edad}'),
+            ),
+            Divider(),
+            Text(
+              'Profesiones',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Divider(),
+            ...usuario.profesiones
+                .map(
+                  (profesion) => ListTile(
+                    title: Text(profesion),
+                  ),
+                )
+                .toList()
+          ],
+        ),
       ),
     );
   }

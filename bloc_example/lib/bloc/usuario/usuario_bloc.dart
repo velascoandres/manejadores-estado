@@ -16,5 +16,15 @@ class UsuarioBloc extends Bloc<UsuarioEvent, UsuarioState> {
         usuario: event.usuario,
       );
     }
+
+    if (event is CambiarEdad) {
+      final edad = event.edad;
+      final usuario = state.usuario.copyWith(
+        edad: edad,
+      );
+      yield UsuarioState(
+        usuario: usuario,
+      );
+    }
   }
 }
